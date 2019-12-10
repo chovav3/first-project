@@ -1,0 +1,16 @@
+:root {
+  --initial-1vh: calc(var(--initial-vh) / 100);
+  --initial-1vw: calc(var(--initial-vw) / 100);
+  font-size: calc(var(--initial-1vh) + var( --initial-1vw) + 6px);
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.fs {
+  @for $i from 0 through 3 {
+     @for $y from 1 through 10{
+      &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+        font-size: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+      }
+    }
+  }
+}

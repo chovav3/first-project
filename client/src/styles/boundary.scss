@@ -1,0 +1,133 @@
+$boundaries: margin, padding;
+
+@each $boundary in $boundaries {
+  .#{$boundary} {
+    @for $i from 0 through 10{
+      @for $y from 1 through 10 {
+        &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+          #{$boundary}: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+        }
+        &-minus-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+          #{$boundary}: -#{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+        }
+      }
+    }
+    $sides: top, right, bottom, left;
+    @each $side in $sides {
+       @for $i from 0 through 10{
+        @for $y from 1 through 10 {
+          &-#{$side}-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+            #{$boundary}-#{$side}: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+          }
+          &-#{$side}-minus-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+            #{$boundary}-#{$side}: -#{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+          }
+        }
+      }
+    }
+
+    &-horizontal{
+      @for $i from 0 through 10{
+        @for $y from 1 through 10 {
+          &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+            #{$boundary}-left: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+            #{$boundary}-right: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+          }
+          &-minus-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+            #{$boundary}-left: -#{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+            #{$boundary}-right: -#{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+          }
+        }
+      }
+    }
+    &-vertical{
+      @for $i from 0 through 10{
+        @for $y from 1 through 10 {
+          &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+            #{$boundary}-top: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+            #{$boundary}-bottom: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+          }
+          &-minus-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+            #{$boundary}-top: -#{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+            #{$boundary}-bottom: -#{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+          }
+        }
+      }
+    }
+  }
+  .#{$boundary} {
+    &-start{
+      @for $i from 0 through 10{
+        @for $y from 1 through 10 {
+          &-start-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+            #{$boundary}-left: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+          }
+          &-start-minus-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+            #{$boundary}-left: -#{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+          }
+        }
+      }
+    }
+    &-end{
+      @for $i from 0 through 10{
+        @for $y from 1 through 10 {
+          &-end-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+            #{$boundary}-right: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+          }
+          &-end-minus-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+            #{$boundary}-right: -#{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+          }
+        }
+      }
+    }
+  }
+  [dir="rtl"]{
+    .#{$boundary} {
+      &-start{
+        @for $i from 0 through 10{
+          @for $y from 1 through 10 {
+            &-start-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+              #{$boundary}-right: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+            }
+            &-start-minus-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+              #{$boundary}-right: -#{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+            }
+          }
+        }
+      }
+      &-end{
+        @for $i from 0 through 10{
+          @for $y from 1 through 10 {
+            &-end-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+              #{$boundary}-left: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+            }
+            &-end-minus-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+              #{$boundary}-left: -#{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// .radius{
+//   border-radius: 50%;
+// }
+
+.radius{
+  border-radius: 100% !important;
+  @for $size from 0 through 100 {
+    &-#{$size} {
+      border-radius: #{$size}#{'%'} !important;
+    }
+  }
+}
+
+.b{
+  border: 1rem !important;
+}
+
+.object-fit{
+  object-fit: contain !important;
+}

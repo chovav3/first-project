@@ -1,0 +1,268 @@
+.end{
+  right: 0 !important;
+}
+.start{
+  left: 0 !important;
+}
+
+[dir="rtl"]{
+  .end{
+    left: 0 !important;
+  }
+  .start{
+    right: 0 !important;
+  }
+}
+
+.ltr{
+  direction: ltr;
+}
+
+.rtl{
+  direction: rtl;
+}
+
+.absolute-middle {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.center{
+  top: 50% !important;
+  left: 50% !important;
+}
+
+.absolute {
+  position: absolute !important;
+}
+
+.flex {
+  display: flex !important;
+  @for $size from 0 through 100 {
+    &-#{$size} {
+      flex: #{$size}#{'%'} !important;
+    }
+  }
+}
+
+.inline-flex{
+  display: inline-flex !important;
+}
+
+.flex-center {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.content-between{
+   justify-content: space-between;
+}
+
+.items-center{
+  align-items: center;
+}
+
+.text-align-last-center{
+  text-align-last: center !important;
+}
+
+.flex-column {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.block{
+  display: block !important;
+}
+
+.inline-block{
+  display: inline-block !important;
+}
+
+.none{
+  display: none !important;
+}
+
+.w-parent{
+  width: 100% !important;
+}
+
+.max-w-parent{
+  max-width: 100% !important;
+}
+
+.min-w-parent{
+  min-width: 100% !important;
+  @for $size from 0 through 100 {
+    &-#{$size} {
+      min-width: #{$size}#{'%'} !important;
+    }
+  }
+}
+
+.min-h{
+  min-height: 100% !important;
+  @for $size from 0 through 100 {
+    &-#{$size} {
+      min-height: #{$size}#{'%'} !important;
+    }
+  }
+}
+
+.w-content{
+  width: fit-content !important;
+}
+
+.min-w-content{
+  min-width: fit-content !important;
+}
+
+.max-w-content{
+  max-width: fit-content !important;
+}
+
+.h-content{
+  height: fit-content !important;
+}
+
+.max-h-content{
+  max-height: fit-content !important;
+}
+
+.opacity {
+  @for $size from 0 through 100 {
+    &-#{if($size != 100, if($size != 0, '0\\.', '') + $size, '1')} {
+      opacity: #{if($size != 100, if($size != 0, '0.', '') + $size, '1')} !important;
+    }
+  }
+}
+
+.s {
+  @for $i from 0 through 10 {
+    @for $y from 1 through 10{
+     &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+       $size: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+       height: $size;
+       width: $size;
+     }
+   }
+ }
+}
+
+.max-s {
+  @for $i from 0 through 10 {
+    @for $y from 1 through 10{
+     &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+       $size: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+       max-height: $size;
+       max-width: $size;
+     }
+   }
+ }
+}
+
+.min-s {
+  @for $i from 0 through 10 {
+    @for $y from 1 through 10{
+     &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+       $size: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+       min-height: $size;
+       min-width: $size;
+     }
+   }
+ }
+}
+
+.w {
+  @for $i from 0 through 10 {
+    @for $y from 1 through 10{
+     &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+       $size: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+       width: $size;
+     }
+   }
+ }
+}
+
+.max-w {
+  @for $i from 0 through 10 {
+    @for $y from 1 through 10{
+     &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+       $size: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+       max-width: $size;
+     }
+   }
+ }
+}
+
+.h {
+  @for $i from 0 through 10 {
+    @for $y from 1 through 10{
+     &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+       $size: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+       height: $size;
+     }
+   }
+ }
+}
+
+.max-h {
+  @for $i from 0 through 10 {
+    @for $y from 1 through 10{
+     &-#{$i}#{if($y != 10, '\\.' + $y, '')} {
+       $size: #{$i}#{if($y != 10, '.' + $y, '')}rem !important;
+       max-height: $size;
+     }
+   }
+ }
+}
+
+.z {
+  @for $size from 0 through 100 {
+    &-#{$size} {
+      z-index: $size !important;
+    }
+    &-minus-#{$size} {
+      z-index: -$size !important;
+    }
+    &-#{$size * 100} {
+      z-index: ($size * 100) !important;
+    }
+  }
+  @for $size from 0 through 100 {
+    &-#{if($size != 100, if($size != 0, '0\\.', '') + $size, '1')} {
+      opacity: #{if($size != 100, if($size != 0, '0.', '') + $size, '1')} !important;
+    }
+  }
+}
+
+$positions: absolute, fixed, relative;
+
+@each $position in $positions {
+  .#{$position}{
+    position: #{$position} !important;
+  }
+}
+
+$sides: right,  left, top, bottom;
+
+@each $side in $sides {
+  .#{$side}{
+    #{$side}: 0 !important;
+    &-auto{
+      #{$side}: auto !important;
+    }
+  }
+}
+
+.appearance-none::-webkit-outer-spin-button,
+.appearance-none::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number] {
+    -moz-appearance:textfield; 
+}

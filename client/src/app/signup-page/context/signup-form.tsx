@@ -13,7 +13,7 @@ type fields = { [key in keyof User]: any } & { [key in keyof Person]: any } & {
 }
 
 export class SignupFormContextValue implements Partial<fields> {
-  desc: Pick<BaseInputProps<User['desc']>, "id" | "onChange" | "onBlur" | "value" | "name">
+  desc:Omit<BaseInputProps<any>, "type"> //Pick<BaseInputProps<User['desc']>, "id" | "onChange" | "onBlur" | "value" | "name">
   callingCode: User['callingCode']
   setCallingCode: Dispatch<SetStateAction<this['callingCode']>>
   currency: User['currency']

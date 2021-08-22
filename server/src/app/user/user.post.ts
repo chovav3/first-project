@@ -1,5 +1,6 @@
 import { IsEmail, IsEnum, IsInt, IsNotEmpty, IsOptional, IsPositive, IsString, Max, Min, ValidateNested } from 'class-validator'
-import { writeImage } from 'src/helpers/write-image.helper'
+//import { writeImage } from 'src/helpers/write-image.helper'
+import { writeFileSync } from 'fs'
 import { DeepPartial } from 'typeorm'
 import { Company } from '../company/company.model'
 import { Person } from '../person/person.model'
@@ -60,8 +61,10 @@ export class AuthUserDto implements DeepPartial<User> {
 export const createUser = async ({ image, logo, ...body }: CreateUserDto, session: ISession) => {
   const imagePath = `/public/uploads/images/user-image.${+new Date}.jpg`
   const logoPath = `/public/uploads/images/user-logo.${+new Date}.jpg`
-  if (image) writeImage({ image, imagePath })
-  if (logo) writeImage({ image: logo, imagePath: logoPath })
+  //if (image) writeImage({ image, imagePath })
+  if (image) writeFileSync(`${process.cwd()}${imagePath}`, image.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/)[2], 'base64')
+  //if (logo) writeImage({ image: logo, imagePath: logoPath })
+  if (logo) writeFileSync(`${process.cwd()}${logoPath}`, logo.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/)[2], 'base64')
   if (body.type === EUserType.person) body.person = Person.create(body.person)
   else {
     delete body.person
